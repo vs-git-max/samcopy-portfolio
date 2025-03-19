@@ -11,13 +11,12 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const SERVICE_ID = "service_578ygcd";
+    const TEMPLATE_ID = "emplate_puezmgq";
+    const PUBLIC_KEY = "oG9CWhDLs04aBFhGc";
+
     emailjs
-      .sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
-        import.meta.env.VITE_PUBLIC_KEY,
-        e.target
-      )
+      .sendForm(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, e.target)
       .then((response) => {
         alert("Message sent!!");
         setFormData({ name: "", email: "", message: "" });
