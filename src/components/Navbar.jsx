@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Navbar = ({ menuOpen, setMenuOpen }) => {
+const Navbar = ({ menuOpen, setMenuOpen, menuItems }) => {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
@@ -20,26 +20,14 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
-              className="text-gray-300 hover:text-white transition-colors">
-              Home
-            </a>
-            <a
-              href="#about"
-              className="text-gray-300 hover:text-white transition-colors">
-              About
-            </a>
-            <a
-              href="#projects"
-              className="text-gray-300 hover:text-white transition-colors">
-              Projects
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-300 hover:text-white transition-colors">
-              Contact
-            </a>
+            {menuItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-white hover:text-blue-500 transition duration-300">
+                {item.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>

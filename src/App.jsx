@@ -12,6 +12,23 @@ const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const menuItems = [{
+    name: "Home",
+    href: "#home",
+  },
+  {
+    name: "About",
+    href: "#about",
+  },
+  {
+    name: "Projects",
+    href: "#projects",
+  },
+  {
+    name: "Contact",
+    href: "#contact",
+  }]
+
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}{" "}
@@ -19,8 +36,8 @@ const App = () => {
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         } bg-black text-gray-100`}>
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} menuItems={menuItems}/>
+        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}   menuItems={menuItems}/>
 
         <Home />
         <About />
